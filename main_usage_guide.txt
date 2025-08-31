@@ -1,17 +1,31 @@
+
+#virtual environment activation if not yet activated
+
+venv\Scripts\activate
+
 --------------------------------------------------------------------------
 
-
+#collect data from webcam
 
 python main.py --mode collect
---------------------------------------------------------------------------
-
-python main.py --mode train --data data/asl_data_20250825_195917.pkl
-
-# for gesture
-python main.py --mode train --data data/gesture_data_20250827_143528.pkl
 
 --------------------------------------------------------------------------
 
-python main.py --mode detect --model models/ example.pth
+# train model
+
+python main.py --mode train --data data/
 
 --------------------------------------------------------------------------
+
+# Run detection of trained data
+
+python main.py --mode detect --model models/
+
+--------------------------------------------------------------------------
+
+ 
+Instruction:
+- Show the gesture for each letter
+- Press SPACE to start collecting for current letter
+- Press 'n' for next letter
+- Press 'q' to quit or save
