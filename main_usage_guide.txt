@@ -1,31 +1,51 @@
 
-#virtual environment activation if not yet activated
+# virtual environment activation if not yet activated
 
 venv\Scripts\activate
 
---------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
-#collect data from webcam
+=== DATA COLLECTION ===  
+python main.py --mode collect-letters  
+python main.py --mode collect-phrases  
 
-python main.py --mode collect
+=== MODEL TRAINING ===  
+python main.py --mode train-letters --data data/asl_letters_TIMESTAMP.pkl  
+python main.py --mode train-dynamic-letters --data data/asl_letters_TIMESTAMP.pkl  
+python main.py --mode train-phrases --data data/asl_phrases_TIMESTAMP.pkl  
 
---------------------------------------------------------------------------
+=== DETECTION ===  
+python main.py --mode detect --letter-model models/asl_letters_TIMESTAMP.pth  
+python main.py --mode detect --dynamic-letter-model models/asl_fast_dynamic_letters_TIMESTAMP.pth  
+python main.py --mode detect --phrase-model models/asl_phrases_TIMESTAMP.pth  
+python main.py --mode detect --letter-model models/asl_letters_TIMESTAMP.pth --dynamic-letter-model models/asl_fast_dynamic_letters_TIMESTAMP.pth  
 
-# train model
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
-python main.py --mode train --data data/
 
---------------------------------------------------------------------------
+Collection Instruction:
 
-# Run detection of trained data
-
-python main.py --mode detect --model models/
-
---------------------------------------------------------------------------
-
- 
-Instruction:
+For static letter:
 - Show the gesture for each letter
 - Press SPACE to start collecting for current letter
 - Press 'n' for next letter
 - Press 'q' to quit or save
+
+
+For dynamic letter 'J' & 'Z'
+- Press 's' to start the record of the movement.
+- Press 'e' to stop or capture the record.
+- Press SPACE to start collecting for current letter
+- Press 'n' for next letter
+- Press 'q' to quit or save
+
+
+For word or phrase:
+- Press 's' to start the record of the movement.
+- Press 'e' to stop or capture the record.
+- Press SPACE to start collecting for current letter
+- Press 'n' for next word or phrase
+- Press 'q' to quit or save
+
+
+
