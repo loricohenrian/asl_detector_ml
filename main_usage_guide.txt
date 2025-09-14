@@ -6,19 +6,37 @@ venv\Scripts\activate
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 === DATA COLLECTION ===  
+
+# Collecting letters
 python main.py --mode collect-letters  
+
+# Collecting words or phrases
 python main.py --mode collect-phrases  
 
 === MODEL TRAINING ===  
-python main.py --mode train-letters --data data/asl_letters_TIMESTAMP.pkl  
-python main.py --mode train-dynamic-letters --data data/asl_letters_TIMESTAMP.pkl  
-python main.py --mode train-phrases --data data/asl_phrases_TIMESTAMP.pkl  
+
+# Training of static letter
+python main.py --mode train-letters --data data/asl_letters_example.pkl  
+
+# Training of dynamic letter j & z
+python main.py --mode train-dynamic-letters --data data/asl_letters_example.pkl  
+
+# Training of word or phrases
+python main.py --mode train-phrases --data data/asl_phrases_example.pkl  
 
 === DETECTION ===  
-python main.py --mode detect --letter-model models/asl_letters_TIMESTAMP.pth  
-python main.py --mode detect --dynamic-letter-model models/asl_fast_dynamic_letters_TIMESTAMP.pth  
-python main.py --mode detect --phrase-model models/asl_phrases_TIMESTAMP.pth  
-python main.py --mode detect --letter-model models/asl_letters_TIMESTAMP.pth --dynamic-letter-model models/asl_fast_dynamic_letters_TIMESTAMP.pth  
+
+# Detection of trained static letters
+python main.py --mode detect --letter-model models/asl_letters_example.pth  
+
+# Detection of trained dynamic
+python main.py --mode detect --dynamic-letter-model models/asl_fast_dynamic_letters_example.pth  
+
+# Detection of trained word or phrases
+python main.py --mode detect --phrase-model models/asl_phrases_example.pth  
+
+# Detection of both static and dynamic letter in one run
+python main.py --mode detect --letter-model models/asl_letters_example.pth --dynamic-letter-model models/asl_fast_dynamic_letters_example.pth  
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -46,6 +64,7 @@ For word or phrase:
 - Press SPACE to start collecting for current letter
 - Press 'n' for next word or phrase
 - Press 'q' to quit or save
+
 
 
 
